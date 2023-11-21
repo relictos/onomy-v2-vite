@@ -82,9 +82,13 @@ const DialogBody = styled.div`
   }
 `;
 
-const DialogStepRoot = styled.div`
+const DialogStepRootInactive = styled.div`
   align-self: stretch;
-  display: ${(p) => p.active? 'block': 'none'};
+  display: none;
+`;
+const DialogStepRootActive = styled.div`
+  align-self: stretch;
+  display: block;
 `;
 
 const DialogStateText = styled.div`
@@ -191,8 +195,11 @@ export const DialogStep = ({
   active = false,
   children
 }) => {
+
+  const DialogStepRoot = active ? DialogStepRootActive : DialogStepRootInactive;
+
   return (
-    <DialogStepRoot active={active}>{children}</DialogStepRoot>
+    <DialogStepRoot>{children}</DialogStepRoot>
   );
 }
 

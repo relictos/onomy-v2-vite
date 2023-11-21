@@ -11,7 +11,7 @@ const BalanceValue = styled.b`
   font-size: var(--text-24-size);
   color: var(--color-text-1lvl);
 `;
-const BalanceChangeBlock = styled.div`
+const BalanceChangeBlockIncrease = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -28,18 +28,16 @@ const BalanceChangeBlock = styled.div`
       fill: var(--color-green)
     }
   }
-
-  ${(p) => p.change == "decrease" ? css`
-
-    >svg{
-      transform: rotate(180deg);
-    }
-    >svg>g>path{
-      fill: var(--color-red)
-    }
-
-  ` : ``}
 `;
+const BalanceChangeBlockDecrease = styled(BalanceChangeBlockIncrease)`
+  >svg{
+    transform: rotate(180deg);
+  }
+  >svg>g>path{
+    fill: var(--color-red)
+  }
+`;
+
 const BalanceBlockContent = styled.div`
   display: flex;
   flex-direction: row;
@@ -47,23 +45,22 @@ const BalanceBlockContent = styled.div`
   justify-content: flex-start;
   gap: var(--gap-8px);
 `;
-const BalanceBlockRoot = styled.div`
+const BalanceBlockRootDefault = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: var(--gap-2px);
-
-  ${(p) => p.mobileHorizontal ? css`
-      @media screen and (max-width: 959px) {
-        align-self: stretch;
-        width: auto;
-        flex-direction: row-reverse;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--gap-0px);
-      }
-    ` : ''}
+`;
+const BalanceBlockRootMobileHorizontal = styled(BalanceBlockRootDefault)`
+  @media screen and (max-width: 959px) {
+    align-self: stretch;
+    width: auto;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-0px);
+  }
 `;
 
 const BalanceBlock = ({
@@ -75,13 +72,16 @@ const BalanceBlock = ({
   mobileHorizontal = true
 }) => {
 
+  const BalanceBlockRoot = mobileHorizontal ? BalanceBlockRootMobileHorizontal : BalanceBlockRootDefault;
+  const BalanceChangeBlock = (changeType == 'increase') ? BalanceChangeBlockIncrease : BalanceChangeBlockDecrease;
+
   return (
-    <BalanceBlockRoot mobileHorizontal={mobileHorizontal}>
+    <BalanceBlockRoot>
       <BalanceLabel>{label}</BalanceLabel>
       <BalanceBlockContent>
         <BalanceValue>{text}</BalanceValue>
         {change && (
-          <BalanceChangeBlock change={changeType}>
+          <BalanceChangeBlock>
             <BalanceLabel>{changeValue}</BalanceLabel>
             <BalanceChangeIcon />
           </BalanceChangeBlock>

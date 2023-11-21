@@ -16,6 +16,8 @@ const ExchangeTabsRightBlock = styled.div`
 `;
 
 const ExchangeMetricsBlock = ({
+  expanded = false,
+  changeExpanded,
   listByType = {
     history: <TradeHistory/>,
     orderbook: <OrderBook/>
@@ -41,7 +43,7 @@ const ExchangeMetricsBlock = ({
         onClick={changeList('orderbook')}
       />
       <ExchangeTabsRightBlock>
-        <BtnIconXs icon={ <FullscreenIcon /> } />
+        <BtnIconXs icon={ <FullscreenIcon /> } onClick={changeExpanded(!expanded)}/>
       </ExchangeTabsRightBlock>
     </TabsList>
       

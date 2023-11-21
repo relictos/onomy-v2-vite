@@ -14,7 +14,7 @@ const OnomyLogoIcon = styled(Logo)`
   overflow: hidden;
   flex-shrink: 0;
 `;
-const MenuItem = styled.div`
+const MenuItemDefault = styled.div`
   position: relative;
   width: 24px;
   height: 24px;
@@ -37,16 +37,16 @@ const MenuItem = styled.div`
       }
     }
   }
-
-  ${(p) => p.active ? css`
-    cursor: default;
-    >svg{
-      >g>path{
-        fill: var(--color-icon-highlight);
-      }
-    }
-    ` : ''}
 `;
+const MenuItemActive = styled(MenuItemDefault)`
+  cursor: default;
+  >svg{
+    >g>path{
+      fill: var(--color-icon-highlight);
+    }
+  }
+`;
+
 const MenuItems = styled.div`
   display: flex;
   flex-direction: column;
@@ -127,18 +127,18 @@ const LeftMenu = () => {
     <LeftMenuRoot>
       <OnomyLogoIcon />
       <MenuItems>
-        <MenuItem>
+        <MenuItemDefault>
           <Wallet />
-        </MenuItem>
-        <MenuItem active>
+        </MenuItemDefault>
+        <MenuItemActive>
           <Exchange />
-        </MenuItem>
-        <MenuItem>
+        </MenuItemActive>
+        <MenuItemDefault>
           <Governance />
-        </MenuItem>
-        <MenuItem>
+        </MenuItemDefault>
+        <MenuItemDefault>
           <Bridge />
-        </MenuItem>
+        </MenuItemDefault>
       </MenuItems>
       <MenuProfileIcon alt="" src="/menuprofileicon@2x.png" />
       <MobileIcon>

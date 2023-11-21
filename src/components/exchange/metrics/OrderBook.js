@@ -41,15 +41,15 @@ const OrderBookBgBarRed = styled.div`
     ` : ''}
 `;
 
-const OrderBookRow = styled.div`
+const OrderBookRowLeft = styled.div`
   padding: var(--padding-6px) var(--padding-4px);
   position: relative;
-
-  ${(p) => p.right ? css`
-    padding-right: 0px;
-    ` : css`
-    padding-left: 0px;
-    `}
+  padding-left: 0px;
+`;
+const OrderBookRowRight = styled.div`
+  padding: var(--padding-6px) var(--padding-4px);
+  position: relative;
+  padding-right: 0px;
 `;
 
 const OrderBookTable = styled.div`
@@ -113,35 +113,35 @@ const OrderBook = () => {
           <Table.ColLeft>Amount</Table.ColLeft>
           <Table.ColRight>Price</Table.ColRight>
         </Table.Header>
-        <Table.Row as={OrderBookRow}>
+        <Table.Row as={OrderBookRowLeft}>
           <OrderBookBgBarGreen width="64%" />
           <Table.ColLeft>0.036000</Table.ColLeft>
           <Table.ColRight>
             <Table.Text.Green>28,991.00</Table.Text.Green>
           </Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow}>
+        <Table.Row as={OrderBookRowLeft}>
           <OrderBookBgBarGreen width="43%" />
           <Table.ColLeft>0.036000</Table.ColLeft>
           <Table.ColRight>
             <Table.Text.Green>28,991.00</Table.Text.Green>
           </Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow}>
+        <Table.Row as={OrderBookRowLeft}>
           <OrderBookBgBarGreen width="36%" />
           <Table.ColLeft>0.036000</Table.ColLeft>
           <Table.ColRight>
             <Table.Text.Green>28,991.00</Table.Text.Green>
           </Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow}>
+        <Table.Row as={OrderBookRowLeft}>
           <OrderBookBgBarGreen width="83%" />
           <Table.ColLeft>0.036000</Table.ColLeft>
           <Table.ColRight>
             <Table.Text.Green>28,991.00</Table.Text.Green>
           </Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow}>
+        <Table.Row as={OrderBookRowLeft}>
           <OrderBookBgBarGreen width="72%" />
           <Table.ColLeft>0.036000</Table.ColLeft>
           <Table.ColRight>
@@ -154,35 +154,35 @@ const OrderBook = () => {
           <Table.ColLeft>Price</Table.ColLeft>
           <Table.ColRight>Amount</Table.ColRight>
         </Table.Header>
-        <Table.Row as={OrderBookRow} right>
+        <Table.Row as={OrderBookRowRight}>
           <OrderBookBgBarRed width="34%" />
           <Table.ColLeft>
             <Table.Text.Red>28,991.00</Table.Text.Red>
           </Table.ColLeft>
           <Table.ColRight>0.036000</Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow} right>
+        <Table.Row as={OrderBookRowRight}>
           <OrderBookBgBarRed width="56%" />
           <Table.ColLeft>
             <Table.Text.Red>28,991.00</Table.Text.Red>
           </Table.ColLeft>
           <Table.ColRight>0.036000</Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow} right>
+        <Table.Row as={OrderBookRowRight}>
           <OrderBookBgBarRed width="72%" />
           <Table.ColLeft>
             <Table.Text.Red>28,991.00</Table.Text.Red>
           </Table.ColLeft>
           <Table.ColRight>0.036000</Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow} right>
+        <Table.Row as={OrderBookRowRight}>
           <OrderBookBgBarRed width="24%" />
           <Table.ColLeft>
             <Table.Text.Red>28,991.00</Table.Text.Red>
           </Table.ColLeft>
           <Table.ColRight>0.036000</Table.ColRight>
         </Table.Row>
-        <Table.Row as={OrderBookRow} right>
+        <Table.Row as={OrderBookRowRight}>
           <OrderBookBgBarRed width="48%" />
           <Table.ColLeft>
             <Table.Text.Red>28,991.00</Table.Text.Red>

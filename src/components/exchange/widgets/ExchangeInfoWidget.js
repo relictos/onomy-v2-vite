@@ -2,7 +2,7 @@ import styled, {css} from "styled-components";
 import {Panel} from "../../general/panels/PanelsStyles";
 import BalanceChangeIcon from '../../svg/balancechange.svg?react';
 
-const InfoWidgetChangeBlock = styled.div`
+const InfoWidgetChangeBlockIncrease = styled.div`
   align-self: stretch;
   display: flex;
   flex-direction: row;
@@ -18,18 +18,16 @@ const InfoWidgetChangeBlock = styled.div`
       fill: var(--color-green)
     }
   }
-
-  ${(p) => p.change == "decrease" ? css`
-
-    >svg{
-      transform: rotate(180deg);
-    }
-    >svg>g>path{
-      fill: var(--color-red)
-    }
-
-  ` : ``}
 `;
+const InfoWidgetChangeBlockDecrease = styled(InfoWidgetChangeBlockIncrease)`
+  >svg{
+    transform: rotate(180deg);
+  }
+  >svg>g>path{
+    fill: var(--color-red)
+  }
+`;
+
 const InfoWidgetTitle = styled.b`
   align-self: stretch;
   position: relative;
@@ -69,9 +67,12 @@ const ExchangeInfoWidget = ({
   subtitle = "Volume 24h",
   change = "increase"
 }) => {
+
+  const InfoWidgetChangeBlock = (change == 'increase') ? InfoWidgetChangeBlockIncrease : InfoWidgetChangeBlockDecrease;
+
   return (
     <InfoWidgetRoot>
-      <InfoWidgetChangeBlock change={change}>
+      <InfoWidgetChangeBlock>
         <BalanceChangeIcon />
       </InfoWidgetChangeBlock>
       <InfoWidgetText>

@@ -60,7 +60,7 @@ const CurrentAssetInfo = styled.div`
     flex: 1 1 0%;
   }
 `;
-const ExpandIconContainer = styled.div`
+const ExpandIconContainerDefault = styled.div`
   position: relative;
   width: 24px;
   height: 24px;
@@ -68,20 +68,19 @@ const ExpandIconContainer = styled.div`
   flex-shrink: 0;
   
   >svg{
-    transition: var(--transition-default);
     width: 24px;
     height: 24px;
     >g>path{
       fill: var(--color-icon-highlight);
     }
   }
-
-  ${(p) => p.expanded ? css`
-      >svg{
-        transform: rotate(180deg);
-      }
-    ` : ''}
 `;
+const ExpandIconContainerExpanded = styled(ExpandIconContainerDefault)`
+  >svg{
+    transform: rotate(180deg);
+  }
+`;
+
 const CurrentAssetSelect = styled.div`
   border-right: 1px solid var(--color-border-default);
   display: flex;
@@ -160,46 +159,49 @@ const ExchangePairInfo = () => {
         changeValue="15%"
       />
       <Popover as={CurrentAssetPopover}>
-      {({ open }) => (
-      <>
-      <CurrentAssetBlock>
-        <Popover.Button as={CurrentAssetSelect}>
-          <CurrentAssetInfo>
-            <CurrentAssetIcon>
-              <AssetIcon>{AssetsIcons.eth}</AssetIcon>
-            </CurrentAssetIcon>
-            <CurrentAssetText>
-              <CurrentAssetTitle>BTC/USDT</CurrentAssetTitle>
-              <CurrentAssetSubtitle>Onomy</CurrentAssetSubtitle>
-            </CurrentAssetText>
-          </CurrentAssetInfo>
-          <ExpandIconContainer expanded={open}>
-            <ExpandIcon />
-          </ExpandIconContainer>
-        </Popover.Button>
-        <BtnSmall
-          text="Add Liquidity"
-          type="secondary"
-        />
-      </CurrentAssetBlock>
+      {({ open }) => {
+        const ExpandIconContainer = open ? ExpandIconContainerExpanded : ExpandIconContainerDefault;
+        return (
+          <>
+          <CurrentAssetBlock>
+            <Popover.Button as={CurrentAssetSelect}>
+              <CurrentAssetInfo>
+                <CurrentAssetIcon>
+                  <AssetIcon>{AssetsIcons.eth}</AssetIcon>
+                </CurrentAssetIcon>
+                <CurrentAssetText>
+                  <CurrentAssetTitle>BTC/USDT</CurrentAssetTitle>
+                  <CurrentAssetSubtitle>Onomy</CurrentAssetSubtitle>
+                </CurrentAssetText>
+              </CurrentAssetInfo>
+              <ExpandIconContainer>
+                <ExpandIcon />
+              </ExpandIconContainer>
+            </Popover.Button>
+            <BtnSmall
+              text="Add Liquidity"
+              type="secondary"
+            />
+          </CurrentAssetBlock>
 
-        <Transition
-          as={Fragment}
-          enter="transition ease-out duration-200"
-          enterFrom="opacity-0 translate-y-1"
-          enterTo="opacity-100 translate-y-0"
-          leave="transition ease-in duration-150"
-          leaveFrom="opacity-100 translate-y-0"
-          leaveTo="opacity-0 translate-y-1"
-        >
-          <Popover.Panel as={PopoverPanelRoot}>
-            <Panel as={PopoverPanel}>
-              <ExhcnagePairsList />
-            </Panel>
-          </Popover.Panel>
-        </Transition>
-      </>
-      )}
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-200"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel as={PopoverPanelRoot}>
+                <Panel as={PopoverPanel}>
+                  <ExhcnagePairsList />
+                </Panel>
+              </Popover.Panel>
+            </Transition>
+          </>
+        )
+      }}
       </Popover>
     </ExchangeTopInfo>
   );

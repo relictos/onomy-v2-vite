@@ -6,8 +6,9 @@ import ExchangePairInfo from "../components/exchange/ExchangePairInfo";
 import ExchangeTradingView from "../components/exchange/ExchangeTradingView";
 import ExchangeWidgets from "../components/exchange/ExchangeWidgets";
 import ExchangeMyOrdersTabs from "../components/exchange/ExchangeMyOrdersTabs";
-import ExchangeOrderForm from "../components/exchange/ExchangeOrderForm";
-import ExchangeMetricsBlock from "../components/exchange/ExchangeMetricsBlock";
+//import ExchangeOrderForm from "../components/exchange/ExchangeOrderForm";
+//import ExchangeMetricsBlock from "../components/exchange/ExchangeMetricsBlock";
+import ExchangeRightColumn from "../components/exchange/ExchangeRightColumn";
 
 const ExchangeTrading = () => {
   return (
@@ -21,8 +22,7 @@ const ExchangeTrading = () => {
           <ExchangeMyOrdersTabs />
         </Page.LeftColumn>
         <Page.RightColumn>
-          <ExchangeOrderForm />
-          <ExchangeMetricsBlock />
+          <ExchangeRightColumn />
         </Page.RightColumn>
       </Page.Content>
     </Page.Root>

@@ -32,9 +32,12 @@ const BtnIconXsRoot = styled.button`
   }
 `;
 
-const BtnIconXs = ({ icon }) => {
+const BtnIconXs = ({ 
+  icon,
+  onClick
+}) => {
   return (
-    <BtnIconXsRoot>
+    <BtnIconXsRoot onClick={onClick}>
       <BtnIcon>{icon}</BtnIcon>
     </BtnIconXsRoot>
   );

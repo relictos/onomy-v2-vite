@@ -19,7 +19,7 @@ const BuySellMobile = ({
       pretitle="Operations"
       title="Buy / Sell BTC"
     >
-      <ExchangeOrderForm mobile={true} />
+      <ExchangeOrderForm isMobile={true} />
     </ModalDialog>
   );
 };

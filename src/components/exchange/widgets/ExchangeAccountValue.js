@@ -24,7 +24,7 @@ const AccountValueChangeValue = styled.div`
   color: var(--color-green);
 `;
 
-const AccountValueChangeBlock = styled.div`
+const AccountValueChangeBlockIncrease = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -53,6 +53,15 @@ const AccountValueChangeBlock = styled.div`
 
   ` : ``}
 `;
+const AccountValueChangeBlockDecrease = styled(AccountValueChangeBlockIncrease)`
+  >svg{
+    transform: rotate(180deg);
+  }
+  >svg>g>path{
+    fill: var(--color-red)
+  }
+`;
+
 const AccountValueTitle = styled.b`
   align-self: stretch;
   position: relative;
@@ -131,12 +140,15 @@ const ExchangeAccountValue = () => {
       ]
   }
 
+  const change = "increase";
+  const AccountValueChangeBlock = (change == "increase") ? AccountValueChangeBlockIncrease : AccountValueChangeBlockDecrease;
+
   return (
     <AccountValueWidget>
       <AccountValueContent>
         <AccountValueTitleContent>
           <AccountValueTitle>$32,582.00</AccountValueTitle>
-          <AccountValueChangeBlock change="increase">
+          <AccountValueChangeBlock>
             <AccountValueChangeValue>15.2%</AccountValueChangeValue>
             <BalanceChangeIcon />
           </AccountValueChangeBlock>

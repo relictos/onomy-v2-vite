@@ -11,15 +11,12 @@ export const TabsList = styled.div`
   gap: var(--gap-20px);
 `;
 
-const TabText = styled.div`position: relative;
+const TabText = styled.div`
+  position: relative;
   font-weight: var(--text-medium);
-
-  ${(p) => p.active ? css`
-    font-weight: var(--text-semibold);
-    color: var(--color-text-1lvl);
-  ` : ''}
 `;
-const CounterText = styled.div`position: relative;
+const CounterText = styled.div`
+  position: relative;
   font-weight: var(--text-medium);
 `;
 const TabCounter = styled.div`
@@ -32,7 +29,7 @@ const TabCounter = styled.div`
   padding: 0px var(--padding-6px);
   color: var(--color-text-2lvl);
 `;
-const StatedefaultRoot = styled.div`
+const TabItemRootDefault = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -49,11 +46,12 @@ const StatedefaultRoot = styled.div`
   &:hover {
     color: var(--color-text-1lvl);
   }
-
-  ${(p) => p.active ? css`
-    border-bottom: 3px solid var(--color-border-highlight);
-    cursor: default;
-  ` : ''}
+`;
+const TabItemRootActive = styled(TabItemRootDefault)`
+  border-bottom: 3px solid var(--color-border-highlight);
+  cursor: default;
+  font-weight: var(--text-semibold);
+  color: var(--color-text-1lvl);
 `;
 
 export const TabItem = ({
@@ -63,9 +61,12 @@ export const TabItem = ({
   active = false,
   onClick
 }) => {
+
+  const TabItemRoot = active ? TabItemRootActive : TabItemRootDefault;
+
   return (
-    <StatedefaultRoot active={active} onClick={onClick}>
-      <TabText active={active}>
+    <TabItemRoot onClick={onClick}>
+      <TabText>
         {text}
       </TabText>
       {counter && (
@@ -75,6 +76,6 @@ export const TabItem = ({
           </CounterText>
         </TabCounter>
       )}
-    </StatedefaultRoot>
+    </TabItemRoot>
   );
 };
