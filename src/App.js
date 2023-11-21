@@ -11,6 +11,7 @@ import { CategoryScale } from "chart.js";
 
 import ExchangeTrading from "./pages/ExchangeTrading";
 import ExchangeDashboard from "./pages/ExchangeDashboard";
+import { WebWalletProvider } from "./provider/WebWalletProvider";
 
 function App() {
   const action = useNavigationType();
@@ -49,10 +50,12 @@ function App() {
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route path="/" element={<ExchangeTrading />} />
-      <Route path="/exchange" element={<ExchangeDashboard />} />
-    </Routes>
+    <WebWalletProvider>
+      <Routes>
+        <Route path="/" element={<ExchangeTrading />} />
+        <Route path="/exchange" element={<ExchangeDashboard />} />
+      </Routes>
+    </WebWalletProvider>
   );
 }
 export default App;

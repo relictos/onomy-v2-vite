@@ -10,12 +10,20 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@onomy/frontend-relay-types": "*",
+    "@onomy/hub": "*",
+    "@onomy/react-hub": "*",
+    "@onomy/react-utils": "*",
+    "@onomy/telescope": "*",
+    "@onomy/wallet": "*",
+    "@onomy/wallet-backend-web": "*",
     "chart.js": "^4.4.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.1",
+    "typescript": "^4.7.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
@@ -26,6 +34,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "vite": "^5.0.0",
+    "vite-plugin-node-polyfills": "^0.16.0",
     "vite-plugin-svgr": "^4.2.0"
   },
   "eslintConfig": {
@@ -42,5 +51,39 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "**/ganache-core/lodash": "^4.17.21",
+    "**/underscore": "^1.13.1",
+    "**/node-fetch": "^2.6.7",
+    "**/ansi-regex": "^5.0.1",
+    "**/set-value": "^4.0.1",
+    "react-scripts/react-dev-utils/browserslist": "^4.16.5",
+    "react-scripts/**/glob-parent": "^5.1.2",
+    "@web3-react/**/json-schema": "^0.4.0",
+    "**/follow-redirects": "^1.14.7",
+    "**/simple-get": "^4.0.1",
+    "**/react": "17.0.2",
+    "**/react-dom": "17.0.2",
+    "**/@types//react": "17.0.2",
+    "**/@types/react-dom": "17.0.2",
+    "**/ethers": "^5.4.6",
+    "**/@cosmjs/stargate": "0.31.0",
+    "**/@cosmjs/amino": "0.31.0",
+    "**/@cosmjs/encoding": "0.31.0",
+    "**/@cosmjs/math": "0.31.0",
+    "**/@cosmjs/proto-signing": "0.31.0",
+    "**/@cosmjs/stream": "0.31.0",
+    "**/@cosmjs/tendermint-rpc": "0.31.0",
+    "**/@cosmjs/utils": "0.31.0",
+    "**/cosmjs-types": "0.8.0",
+    "**/@onomy/hub": "9.7.0",
+    "**/@onomy/client": "9.7.0",
+    "**/@onomy/frontend-relay-types": "9.0.0",
+    "**/@onomy/react-hub": "9.7.0",
+    "**/@onomy/react-utils": "9.0.0",
+    "**/@onomy/telescope": "0.9.9",
+    "**/@onomy/wallet": "9.0.1",
+    "**/@onomy/wallet-backend-web": "9.0.1"
   }
 }
